@@ -1,5 +1,6 @@
 import './style.css';
-import { Sub } from './sub_parser/srt';
+import { Sub } from './sub_parser/common';
+
 
 const submitButton = document.getElementById("submit") as HTMLButtonElement;
 const filesInputs = document.getElementById("subFilesList") as HTMLInputElement;
@@ -13,17 +14,17 @@ filesInputs.addEventListener("change", async function(e) {
 
     const gg = await readMultiplesFiles(files);
 
+
     const sub = new Sub();
     
-    let result = sub.parse(gg[0], { 
-        subtype: "srt" 
+    let parsedgg = sub.parse(gg, {
+        subtype:"srt"
     })
-
-    let resultFreq = sub.freq(result);
-
-    console.log(resultFreq);
-
     
+    
+    const freqgg = sub.freq(parsedgg)
+
+    transformFreqMapToText(freqgg)
 })
 
 async function readMultiplesFiles(files: FileList) {
@@ -40,6 +41,26 @@ async function readMultiplesFiles(files: FileList) {
 
 
 submitButton.addEventListener("click", function() {
-    // const blob = new Blob(JSON.stringify())
-    // file.readAsText()
+    // FIXME: When click it should open the new window with all the freq 
 })
+
+function transformFreqMapToText(frequencyMap: Map<string, number>) {
+
+    let freqData: string = "";
+    frequencyMap.forEach(orderMapElements)
+
+    function orderMapElements(value: number, key: string, _: Map<string, number>) {
+        // FIXME: Insert a linebreak \n doesn't work unfortunately
+        freqData +=`${key} - ${value}`
+        freqData += "\n"
+    }
+
+    createNewHTMLPage(freqData)
+
+}
+
+function createNewHTMLPage(text: string) {
+    // TODO: Add some style (Black background)
+    let newPage = window.open("")
+    newPage?.document.writeln(text)
+}
