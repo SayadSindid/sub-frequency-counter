@@ -1,5 +1,5 @@
-import type { ParseOptions, ParsedResult } from "../index";
-import { srtParcing } from "./extension/srt";
+import type { ParseOptions, ParsedResult } from "../index.js";
+import { srtParcing } from "./extension/srt.js";
 
 export class Sub {
     //No constructor

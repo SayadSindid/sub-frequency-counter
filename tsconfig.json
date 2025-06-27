@@ -19,7 +19,9 @@
 		"noUnusedParameters": true,
 		"isolatedModules": true,
 		"noFallthroughCasesInSwitch": true,
-		"noUncheckedSideEffectImports": true
+		"noUncheckedSideEffectImports": true,
+
+		"allowJs": true
 	},
 	"include": ["src", "vite.config.ts"]
 }

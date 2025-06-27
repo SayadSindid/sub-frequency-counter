@@ -1,5 +1,5 @@
 import './style.css';
-import { Sub } from './sub_parser/common';
+import { Sub } from './sub_parser/common.js';
 
 
 const submitButton = document.getElementById("submit") as HTMLButtonElement;
