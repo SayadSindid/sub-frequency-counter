@@ -11,19 +11,22 @@
 
     <main class="h-2/3 w-4/6 p-5 flex flex-col">
 
-      <header class="text-white font-bold text-center gap-3 mb-20 font-Rubik">
+      <header class="text-white font-bold flex flex-col text-center gap-3 mb-6 font-Rubik">
         <h1 class="text-2xl">Subtitles words frequency counter</h1>
+        <h2 class="text-sm text-gray-500">Note: A new tab will be open when clicking on submit.</h2>
+        <h3 class="text-md text-red-700">Only srt is supported currently.</h3>
       </header>
 
       <section class="justify-center items-center flex w-full h-4/6 flex-col gap-10 font-Rubik text-xl">
         <label class="text-xl font-semibold">Select your files</label>
-          <input type="file" name="subFiles" id="subFilesList" accept=".srt, .ass, .vtt" multiple class="inputdownload border p-10">
+        <!-- , .ass, .vtt Add this to accept when support for them are added -->
+          <input type="file" name="subFiles" id="subFilesList" accept=".srt" multiple class="inputdownload border p-10">
         </label>
         <input type="button" id="submit" value="Submit" class="border p-2 px-6 rounded-md active:bg-gray-700/40 transform transition-all active:outline-2">
       </section>
 
-      
-    <details class="font-Rubik text-center relative w-[60%] md:w-[40%] self-center mt-4">
+    <!-- Could add options later on -->
+    <!-- <details class="font-Rubik text-center relative w-[60%] md:w-[40%] self-center mt-4">
       <summary class="cursor-pointer border border-gray-400 ">OPTIONS</summary>
       <ul class="absolute top-full w-full p-2 z-10 border border-gray-400">
         <li class="flex flex-row gap-3 justify-center">
@@ -31,7 +34,7 @@
           <input class="me-2 mt-[0.3rem] h-3.5 w-8 appearance-none rounded-[0.4375rem] before:pointer-events-none before:absolute before:h-3.5 before:w-3.5 before:rounded-full before:bg-transparent before:content-[''] after:absolute after:z-[2] after:-mt-[0.1875rem] after:h-5 after:w-5 after:rounded-full after:border-none after:bg-white after:shadow-switch-2 after:transition-[background-color_0.2s,transform_0.2s] after:content-[''] checked:bg-blue-600 checked:after:absolute checked:after:z-[2] checked:after:-mt-[3px] checked:after:ms-[1.0625rem] checked:after:h-5 checked:after:w-5 checked:after:rounded-full checked:after:border-none checked:after:bg-white checked:after:shadow-switch-1 checked:after:transition-[background-color_0.2s,transform_0.2s] checked:after:content-[''] hover:cursor-pointer focus:outline-none focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-switch-3 focus:before:shadow-black/60 focus:before:transition-[box-shadow_0.2s,transform_0.2s] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-5 focus:after:w-5 focus:after:rounded-full focus:after:content-[''] checked:focus:border-blue-600 checked:focus:bg-blue-600 checked:focus:before:ms-[1.0625rem] checked:focus:before:scale-100 checked:focus:before:shadow-switch-3 checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] dark:bg-white/25" type="checkbox" id="toggleSwitchShaddah" checked="true"/>
         </li>
       </ul>
-    </details>
+    </details> -->
 
     </main>
 

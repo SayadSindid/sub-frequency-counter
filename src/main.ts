@@ -8,25 +8,6 @@ const filesInputs = document.getElementById("subFilesList") as HTMLInputElement;
 // TODO: Implement check for .srt, .ass, .vtt check with a regex in the file name
 
 
-filesInputs.addEventListener("change", async function(e) {
-    const target = e.target as HTMLInputElement
-    const files = (target.files as FileList);
-
-    const gg = await readMultiplesFiles(files);
-
-
-    const sub = new Sub();
-    
-    let parsedgg = sub.parse(gg, {
-        subtype:"srt"
-    })
-    
-    
-    const freqgg = sub.freq(parsedgg)
-
-    transformFreqMapToText(freqgg)
-})
-
 async function readMultiplesFiles(files: FileList) {
 
     let arrayStringSubtitlesFiles: string[] = [];
@@ -40,8 +21,23 @@ async function readMultiplesFiles(files: FileList) {
 }
 
 
-submitButton.addEventListener("click", function() {
-    // FIXME: When click it should open the new window with all the freq 
+submitButton.addEventListener("click", async function() {
+    const userFilesInput = filesInputs as HTMLInputElement
+    const userFiles = (userFilesInput.files as FileList);
+
+    const userSubFiles = await readMultiplesFiles(userFiles);
+
+
+    const sub = new Sub();
+    
+    const parsedUserSubFiles = sub.parse(userSubFiles, {
+        subtype:"srt"
+    })
+    
+    
+    const freqUserSubFiles = sub.freq(parsedUserSubFiles)
+
+    transformFreqMapToText(freqUserSubFiles)
 })
 
 function transformFreqMapToText(frequencyMap: Map<string, number>) {
@@ -50,7 +46,6 @@ function transformFreqMapToText(frequencyMap: Map<string, number>) {
     frequencyMap.forEach(orderMapElements)
 
     function orderMapElements(value: number, key: string, _: Map<string, number>) {
-        // FIXME: Insert a linebreak \n doesn't work unfortunately
         freqData +=`${key} - ${value}`
         freqData += "\n"
     }
@@ -60,7 +55,11 @@ function transformFreqMapToText(frequencyMap: Map<string, number>) {
 }
 
 function createNewHTMLPage(text: string) {
-    // TODO: Add some style (Black background)
-    let newPage = window.open("")
-    newPage?.document.writeln(text)
+    let newPage = window.open("") as Window
+    const newPageBody = newPage.document.querySelector("body") as HTMLBodyElement;
+    newPageBody.innerText = text;
+    // Style stuff
+    newPageBody.style.paddingLeft += "6px"
+    newPageBody.style.color += "white"
+    newPageBody.style.fontWeight += "500"
 }

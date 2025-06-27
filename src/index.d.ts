@@ -1,9 +1,3 @@
-// Stuff dunno
-export interface parseOutput {
-    // [key: number]: 
-}
-
-
 export interface ParsedResult {
     content: string, // content of the sub
     start:number, // Start of subtitle in ms
