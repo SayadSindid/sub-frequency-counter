@@ -10,7 +10,8 @@ export class Sub {
         if (options.subtype === "srt") {
             for (let i = 0; i < files.length; i++) {
                 const file = files[i];
-                data.push(srtParcing(file, options))
+                // TODO: Add options management.
+                data.push(srtParcing(file))
             }
             return data;
         }

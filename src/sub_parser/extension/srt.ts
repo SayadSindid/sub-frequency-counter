@@ -1,8 +1,8 @@
-import type { ParsedResult, ParseOptions } from "../..";
+import type { ParsedResult } from "../..";
 
 
 
-export function srtParcing(file: string, options: ParseOptions): ParsedResult[] {
+export function srtParcing(file: string): ParsedResult[] {
     let data: ParsedResult[] = [];
     // Regex making 4 group out of the cleaned string
     const regexGrouper: RegExp = /^(?<index>\d+)\s+(?<start>\d{2}:\d{2}:\d{2},\d{3})\s+-->\s+(?<end>\d{2}:\d{2}:\d{2},\d{3})\s+(?<content>.+)$/g
