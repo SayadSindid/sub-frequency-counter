@@ -1,5 +1,5 @@
 # Simple workflow for deploying static content to GitHub Pages
-name: Subtitles words frequency counter
+name: Subtitles-words-frequency-counter
 
 on:
   # Runs on pushes targeting the default branch
