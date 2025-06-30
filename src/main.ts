@@ -33,12 +33,9 @@ submitButton.addEventListener("click", async function() {
     const parsedUserSubFiles = sub.parse(userSubFiles, {
         subtype:"srt"
     })
-    console.log(userSubFiles)
-    console.log(parsedUserSubFiles)
     
     const freqUserSubFiles = sub.freq(parsedUserSubFiles)
 
-    console.log(freqUserSubFiles)
     transformFreqMapToText(freqUserSubFiles)
 })
 
