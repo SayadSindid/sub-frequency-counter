@@ -6,9 +6,14 @@ export function srtParcing(file: string): ParsedResult[] {
     let data: ParsedResult[] = [];
     // Regex making 4 group out of the cleaned string
     const regexGrouper: RegExp = /^(?<index>\d+)\s+(?<start>\d{2}:\d{2}:\d{2},\d{3})\s+-->\s+(?<end>\d{2}:\d{2}:\d{2},\d{3})\s+(?<content>.+)$/g
-
+    let arrSplit: string[] = [];
     // Get every subtitle line as a an array of string.
-    const arrSplit = file.split("\r\n\r\n")
+    // Check if the sub file use \r or only \n
+    if (file.includes("\r")) {
+        arrSplit = file.split("\r\n\r\n")
+    } else {
+        arrSplit = file.split("\n\n")
+    }
     // Remove escape characters
     const noEscapeArr = arrSplit.map((x) => x.replaceAll("\r\n", " "));
     for (let i = 0; i < noEscapeArr.length; i++) {
